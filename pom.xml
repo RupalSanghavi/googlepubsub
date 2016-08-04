@@ -33,16 +33,11 @@
 		<!-- https://mvnrepository.com/artifact/com.google.api.client/google-api-client-json -->
 		<!-- https://mvnrepository.com/artifact/com.google.api.client/google-api-client-http -->
 		<dependency>
-			<groupId>com.google.api.client</groupId>
-			<artifactId>google-api-client-http</artifactId>
-			<version>1.2.3-alpha</version>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-pubsub</artifactId>
+			<version>v1-rev11-1.22.0</version>
 		</dependency>
-
-		<dependency>
-			<groupId>com.google.api.client</groupId>
-			<artifactId>google-api-client-json</artifactId>
-			<version>1.2.3-alpha</version>
-		</dependency>
+		
 
 		<dependency>
 			<groupId>com.google.appengine</groupId>
@@ -57,11 +52,7 @@
 			<version>0.2.6</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.google.apis</groupId>
-			<artifactId>google-api-services-pubsub</artifactId>
-			<version>v1-rev11-1.22.0</version>
-		</dependency>
+		
 
 		<dependency>
 			<groupId>com.google.api-client</groupId>
