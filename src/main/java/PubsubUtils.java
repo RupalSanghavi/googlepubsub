@@ -9,7 +9,6 @@ import com.google.api.services.pubsub.PubsubScopes;
 import com.google.appengine.api.appidentity.AppIdentityService;
 import com.google.appengine.api.appidentity.AppIdentityServiceFactory;
 import com.google.apphosting.api.ApiProxy;
-import com.homedepot.sa.el.common.foundation.registry.Constants;
 import com.google.common.base.Preconditions;
 
 import java.io.IOException;
