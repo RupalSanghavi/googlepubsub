@@ -7,7 +7,6 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.memcache.MemcacheService;
 import com.google.appengine.api.memcache.MemcacheServiceFactory;
-import com.homedepot.sa.el.common.foundation.registry.Constants;
 
 import java.io.IOException;
 import javax.servlet.ServletInputStream;
