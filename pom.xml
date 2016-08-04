@@ -25,7 +25,21 @@
 	</properties>
 
 	<dependencies>
-	<!-- https://mvnrepository.com/artifact/com.google.api-client/google-api-client -->
+		<!-- https://mvnrepository.com/artifact/com.google.api-client/google-api-client -->
+		<!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-pubsub -->
+		<!-- https://mvnrepository.com/artifact/com.google.cloud/gcloud-java-core -->
+		<dependency>
+			<groupId>com.google.cloud</groupId>
+			<artifactId>gcloud-java-core</artifactId>
+			<version>0.2.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-pubsub</artifactId>
+			<version>v1-rev11-1.22.0</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.google.api-client</groupId>
 			<artifactId>google-api-client</artifactId>
