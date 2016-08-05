@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.subscriber</groupId>
+	<groupId>rupal.subscriber</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
@@ -38,23 +38,8 @@
 			<version>v1-rev11-1.22.0</version>
 
 		</dependency>
-		
-
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-api-1.0-sdk</artifactId>
-			<version>1.9.40</version>
-		</dependency>
-
-
-		<dependency>
-			<groupId>com.google.cloud</groupId>
-			<artifactId>gcloud-java-core</artifactId>
-			<version>0.2.6</version>
-		</dependency>
 
 		
-
 		<dependency>
 			<groupId>com.google.api-client</groupId>
 			<artifactId>google-api-client</artifactId>
@@ -72,12 +57,28 @@
 	</dependencies>
 
 	<build>
-		<plugins>
-			<plugin>
+	<plugins>
+	<plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-jar-plugin</artifactId>
+	<configuration>
+	<archive>
+          <manifest>
+            <addClasspath>true</addClasspath>
+            <classpathPrefix>lib/</classpathPrefix>
+            <mainClass>rupal.subscriber.DemoApplication</mainClass>
+          </manifest>
+        </archive>
+</configuration>
+</plugin>
+
+<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-		</plugins>
+
+	</plugins>
+
 	</build>
 
 

@@ -1,3 +1,4 @@
+package rupal.subscriber;
 
 /**
  * A class holds constants.
