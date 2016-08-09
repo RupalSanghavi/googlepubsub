@@ -1,64 +1,36 @@
 package rupal.subscriber;
-//
-//import com.google.api.client.json.JsonParser;
-//import com.google.api.client.json.JsonParser;
-//import com.google.api.client.json.jackson2.JacksonFactory;
-//import com.google.api.services.pubsub.model.PubsubMessage;
-//import com.google.appengine.api.datastore.DatastoreService;
-//import com.google.appengine.api.datastore.DatastoreServiceFactory;
-//import com.google.appengine.api.datastore.Entity;
-//import com.google.appengine.api.memcache.MemcacheService;
-//import com.google.appengine.api.memcache.MemcacheServiceFactory;
-//
-//import java.io.IOException;
-//import javax.servlet.ServletInputStream;
+
+
+import com.google.api.client.json.JsonParser;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.services.pubsub.model.PubsubMessage;
+
+import java.io.IOException;
+
+import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServlet;
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpServletResponse;
-//
-///**
-// * Processes incoming messages and sends them to the client web app.
-// */
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+// The following class is based on the HTTP Servlet 2.5 standard and
+// should be registered to listen to your subscription endpoint URL
+// and configured in your Web servlet environment (usually through
+// your web.xml configuration).
 public class ReceiveMessageServlet extends HttpServlet {
-//
-//    @Override
-//    @SuppressWarnings("unchecked")
-//    public final void doPost(final HttpServletRequest req,
-//                             final HttpServletResponse resp)
-//            throws IOException {
-//        // Validating unique subscription token before processing the message
-//        String subscriptionToken = System.getProperty(
-//                Constants.BASE_PACKAGE + ".subscriptionUniqueToken");
-//        if (!subscriptionToken.equals(req.getParameter("token"))) {
-//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-//            resp.getWriter().close();
-//            return;
-//        }
-//
-//        ServletInputStream inputStream = req.getInputStream();
-//
-//        // Parse the JSON message to the POJO model class
-//        JsonParser parser = JacksonFactory.getDefaultInstance()
-//                .createJsonParser(inputStream);
-//        parser.skipToKey("message");
-//        PubsubMessage message = parser.parseAndClose(PubsubMessage.class);
-//
-//        // Store the message in the datastore
-//        Entity messageToStore = new Entity("PubsubMessage");
-//        messageToStore.setProperty("message",
-//                new String(message.decodeData(), "UTF-8"));
-//        messageToStore.setProperty("receipt-time", System.currentTimeMillis());
-//        DatastoreService datastore =
-//                DatastoreServiceFactory.getDatastoreService();
-//        datastore.put(messageToStore);
-//
-//        // Invalidate the cache
-//        MemcacheService memcacheService =
-//                MemcacheServiceFactory.getMemcacheService();
-//        memcacheService.delete(Constants.MESSAGE_CACHE_KEY);
-//
-//        // Acknowledge the message by returning a success code
-//        resp.setStatus(HttpServletResponse.SC_OK);
-//        resp.getWriter().close();
-//    }
+    @Override
+    public void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException {
+        ServletInputStream reader = req.getInputStream();
+        // Parse the JSON message to the POJO model class.
+        JsonParser parser =
+                JacksonFactory.getDefaultInstance().createJsonParser(reader);
+        parser.skipToKey("message");
+        PubsubMessage message = parser.parseAndClose(PubsubMessage.class);
+        // Base64-decode the data and work with it.
+        String data = new String(message.decodeData(), "UTF-8");
+        // Work with your message
+        // Respond with a 20X to acknowledge receipt of the message.
+        resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
+        resp.getWriter().close();
+    }
 }
