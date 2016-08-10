@@ -40,10 +40,10 @@
 		</dependency>
 
 		<dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-tomcat</artifactId>
-        <scope>provided</scope>
-    </dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>com.google.api-client</groupId>
 			<artifactId>google-api-client</artifactId>
@@ -62,16 +62,20 @@
 
 	<build>
 		<plugins>
-		<plugin>
-		<groupId>com.google.appengine</groupId>
-		<artifactId>appengine-maven-plugin</artifactId>
-		<version>1.9.9</version>
-		</plugin> 
-		<plugin>
-		<groupId>com.google.appengine</groupId>
-        <artifactId>gcloud-maven-plugin</artifactId>
-        <version>2.0.9.106.v20160420</version>
-        </plugin>
+			<plugin>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-maven-plugin</artifactId>
+				 <version>${appengine.version}</version>
+				   <configuration>
+				      <version>1.9.9</version>
+				   </configuration>
+				
+			</plugin>
+			<plugin>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>gcloud-maven-plugin</artifactId>
+				<version>2.0.9.106.v20160420</version>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
